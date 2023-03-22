@@ -48,10 +48,12 @@
         android:layout_height="57dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="116dp"
+        android:isIndicator="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movieBack"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintVertical_bias="0.754"
+        />
 
     <TextView
         android:id="@+id/movieDetail"

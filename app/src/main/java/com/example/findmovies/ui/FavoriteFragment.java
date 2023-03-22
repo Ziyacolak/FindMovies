@@ -2,6 +2,7 @@ package com.example.findmovies.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.findmovies.CustomItemClickListener;
+import com.example.findmovies.DetailPage;
 import com.example.findmovies.R;
 import com.example.findmovies.adapter.FavoritesAdapter;
 import com.example.findmovies.adapter.PostAdapter;
@@ -24,6 +26,7 @@ import com.example.findmovies.database.FavoritesEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class FavoriteFragment extends Fragment implements CustomItemClickListener {
@@ -38,7 +41,7 @@ public class FavoriteFragment extends Fragment implements CustomItemClickListene
     ImageView img;
 
 
-    List<FavoritesEntity> favoritesEntitiesList ;
+    List<FavoritesEntity> favoritesEntitiesList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,9 @@ public class FavoriteFragment extends Fragment implements CustomItemClickListene
 
         View rootViewf= inflater.inflate(R.layout.fragment_favorite, container, false);
 
-
+        FavoritesDatabase database =FavoritesDatabase.getFavoritesDbInstance(getContext());
+        favoritesEntitiesList = database.favoritesDAO().getAllFavorites();
+        adapter = new FavoritesAdapter(this,favoritesEntitiesList);
 
         favoriRcw = rootViewf.findViewById(R.id.favorircw);
         favoriRcw.setAdapter(adapter);
@@ -63,16 +68,17 @@ public class FavoriteFragment extends Fragment implements CustomItemClickListene
         favoriRcw.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+        adapter.notifyDataSetChanged();
+        Log.d("gara", String.valueOf(database.favoritesDAO().getAllFavorites().size()));
 
 
 
 
-        adapter = new FavoritesAdapter(this,favoritesEntitiesList);
 
 
-        FavoritesDatabase database =FavoritesDatabase.getFavoritesDbInstance(getContext());
-        database.favoritesDAO().getAllFavorites();
-        Log.d("gara",database.favoritesDAO().getAllFavorites().toString());
+
+
+
 
 
 
@@ -85,6 +91,17 @@ public class FavoriteFragment extends Fragment implements CustomItemClickListene
 
     @Override
     public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity().getApplication(), DetailPage.class);
+        intent.putExtra("id",favoritesEntitiesList.get(position).movieId);
+       Log.d("msg",favoritesEntitiesList.get(position).title);
+        intent.putExtra("movie",favoritesEntitiesList.get(position).title);
+        intent.putExtra("detail",favoritesEntitiesList.get(position).overview);
+        intent.putExtra("rate",favoritesEntitiesList.get(position).voteAverage);
+        intent.putExtra("img2",favoritesEntitiesList.get(position).posterPath);
+        intent.putExtra("img",favoritesEntitiesList.get(position).backdropPath);
+       startActivity(intent);
+
+
 
     }
 

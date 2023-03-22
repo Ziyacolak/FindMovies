@@ -29,10 +29,10 @@ public class WatchListEntity {
     public String overview;
 
     @ColumnInfo(name="voteAverage")
-    public String voteAverage;
+    public Float voteAverage;
 
 
-    public WatchListEntity(int key, String backdropPath, String posterPath, int movieId, String title, String overview, String voteAverage) {
+    public WatchListEntity(int key, String backdropPath, String posterPath, int movieId, String title, String overview, Float voteAverage) {
         this.key = key;
         this.backdropPath = backdropPath;
         this.posterPath = posterPath;

@@ -29,10 +29,10 @@ public class FavoritesEntity {
     public String overview;
 
     @ColumnInfo(name="voteAverage")
-    public String voteAverage;
+    public Float voteAverage;
 
 
-    public FavoritesEntity(int key, String backdropPath, String posterPath, int movieId, String title, String overview, String voteAverage) {
+    public FavoritesEntity(int key, String backdropPath, String posterPath, int movieId, String title, String overview, Float voteAverage) {
         this.key = key;
         this.backdropPath = backdropPath;
         this.posterPath = posterPath;
@@ -41,4 +41,6 @@ public class FavoritesEntity {
         this.overview = overview;
         this.voteAverage = voteAverage;
     }
+
+
 }

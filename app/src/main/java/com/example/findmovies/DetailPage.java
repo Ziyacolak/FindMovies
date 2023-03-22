@@ -150,7 +150,7 @@ ActivityDetailPageBinding pageBinding;
             } else {
                 menu.getItem(0).setIcon(ContextCompat.getDrawable(this,R.drawable.baseline_favorite_24));
                 favoritesB = true;
-                favoritesEntity=new FavoritesEntity(key,img,img2,key,title,detail,String.valueOf(rating));
+                favoritesEntity=new FavoritesEntity(key,img,img2,key,title,detail,rating);
                 insertFavorites(favoritesEntity);
             }
         }
@@ -164,7 +164,7 @@ ActivityDetailPageBinding pageBinding;
             }else {
                 menu.getItem(1).setIcon(ContextCompat.getDrawable(this,R.drawable.baseline_format_list_bulleted_24));
                 watchlistB = true;
-                watchListEntity=new WatchListEntity(key,img,img2,key,title,detail,String.valueOf(rating));
+                watchListEntity=new WatchListEntity(key,img,img2,key,title,detail,rating);
                 insertWatchList(watchListEntity);
 
             }
