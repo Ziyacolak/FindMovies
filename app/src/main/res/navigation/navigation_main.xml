@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/search"
+    xmlns:tools="http://schemas.android.com/tools">
+    <fragment
+        tools:layout="@layout/fragment_search"
+        android:label="0"
+        android:id="@+id/search"
+        android:name="com.example.findmovies.ui.SearchFragment"/>
+    <fragment
+        android:id="@+id/watchlist"
+        android:name="com.example.findmovies.ui.WatchlistFragment"
+        android:label="2"
+        tools:layout="@layout/fragment_watchlist"/>
+    <fragment
+        android:id="@+id/favorite"
+        android:name="com.example.findmovies.ui.FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"
+        android:label="1"/>
+
+</navigation>
